@@ -1,10 +1,12 @@
 # Auto-Encoder(AE)
 ![](images/2023-05-03-13-25-23.png)
-- goal: data reconstruction(reconstructed output ≒ input(target))
+![](images/2023-05-04-09-13-51.png)
+- goal: compressed latent vector z(single value for each attribute) from input(dimensionality reduction)
 - features
     - unsupervised learning
     - encoding-decoding structure(bottleneck network design)
-    - target = input(input dimension = output dimension)
+    - data reconstruction(reconstructed output ≒ input)
+        - target = input(input dimension = output dimension)
     - loss function
         - MSE(real values)
         - Cross-entropy(binary values)
