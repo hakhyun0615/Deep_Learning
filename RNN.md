@@ -63,18 +63,18 @@
                     - cannot shuffle within timesteps(each is relevant)
 
 # LSTM(Long Short-Term Memory)
-![Alt text](image-1.png)
-![Alt text](image-3.png)
+![Alt text](images/image-1.png)
+![Alt text](images/image-3.png)
 - goals
     - capture long-term dependency
     - overcome the vanishing/exploding gradient problem
-- problems
-    ![Alt text](image.png)
+- problems  
+    ![Alt text](images/image.png)
     - hidden state only cannot solve problems of SimpleRNN
         - if the gap between the relevant information and the point where it is needed becomes large, RNN learning ability will be decreased
         - if the hidden state size is too small, it cannot digest all preceding information(information loss) and if the hidden size is too big, there are too much weight parameters to learn
-- solutions
-    ![Alt text](image-4.png)
+- solutions  
+    ![Alt text](images/image-4.png)
     - add cell state
         - cell state sorts out important and unimportant information from the past with every inputs
             - important information to long-term memory(why cell state exists)
@@ -91,8 +91,22 @@
         - output gate
             - decide how much information to extract from the cell state to the hidden state
 
-# Stacked LSTM
-![Alt text](image-8.png)
+# GRU(Gated Recurrent Unit)
+![Alt text](images/image-5.png)
+- features  
+    ![Alt text](images/image-6.png)
+    - simplified version of LSTM
+        - GRU's hidden state =  LSTM's cell state and hidden state
+        - GRU's update gate = LSTM's input gate and forget gate
+    - reset and update gates
+        - gates learn from current input and previous hidden state same as RNN(LSTM total weight matrixs = RNN total weight matrixs * 3)
+        - reset gate
+            - capture short-term memory
+        - update gate
+            - capture long-term memory
+
+# Stacked LSTM  
+![Alt text](images/image-8.png)
 - features
     - deep models are generally better than a shallow one
     - typically stacks up to max 3 layers
@@ -107,18 +121,19 @@
     - per-sequence mask: apply same dropout for each timestep
         - ex) RNNdrop, Variational RNN dropout, Weight-dropped LSTM, Recurrent dropout
 
-
-# GRU(Gated Recurrent Unit)
-![Alt text](image-5.png)
-- features
-    ![Alt text](image-6.png)
-    - simplified version of LSTM
-        - GRU's hidden state =  LSTM's cell state and hidden state
-        - GRU's update gate = LSTM's input gate and forget gate
-    - reset and update gates
-        - gates learn from current input and previous hidden state same as RNN(LSTM total weight matrixs = RNN total weight matrixs * 3)
-        - reset gate
-            - capture short-term memory
-        - update gate
-            - capture long-term memory
-        
+# Attension LSTM  
+![Alt text](images/image-10.png)
+- problem  
+    ![Alt text](images/image-9.png)
+    - main bottleneck of Seq2Seq is that it requires to compress the entire content of the input sequence into a small fixed-size vector(information loss is inevitable)
+- solution
+    - attention 
+        - allows Decoder to look at Encoder hidden states, whoses weighted average is an additional input to Decoder
+        - query, key, value vectors
+            - query s_t-1: decoder's previous hidden state
+            - key h_i: encoder's hidden state
+            - value h_j: encoder's hidden state
+- probelm unsolved
+    - since it is still RNN based model
+        - processing input words cannot be done with parallel computing(training time is long for a large corpus)
+        - when the sequence between words are long, the dependency falls 
