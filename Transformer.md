@@ -1,5 +1,5 @@
 # Seq2Seq limitation
-![Alt text](<images/스크린샷 2023-08-31 오전 10.18.44.png>)  
+![Alt text](<images/image-11.png>)  
 - having context as a fixed size vector can cause a bottleneck and performance degradation
 ![Alt text](<images/스크린샷 2023-08-31 오전 10.21.07.png>)
 - although the decoder can improve performance by consulting the context vector each time(reduce information loss), it still requires compressing the sentences into a single vector so bottleneck still exists
