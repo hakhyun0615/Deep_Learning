@@ -1,6 +1,6 @@
 # Auto-Encoder(AE)
-![](images/2023-05-03-13-25-23.png)
-![](images/2023-05-04-09-13-51.png)
+![](images/image-38.png)
+![](images/image-39.png)
 - goal: compressed latent vector z(single value for each attribute) from input(dimensionality reduction)
 - features
     - unsupervised learning
@@ -16,7 +16,7 @@
         - high dimension input: X
         - low dimension latent vector: O
     - AE vs PCA  
-        ![](images/2023-05-03-14-44-19.png)
+        ![](images/image-40.png)
         - PCA: dimensionality reduction using linear plane(hyperplane) 
         - AE: dimensionality reduction using nonlinear manifold
         - performance: AE > PCA(since AE is deep learning and PCA is not, AE's performance is affected by the number of data)
@@ -31,14 +31,14 @@
 - lossy: input dimesion > latent vector dimension → inevitable information loss → input quality > output quality 
 
 # Tied weight Auto-Encoder
-![](images/2023-05-03-14-49-45.png)
+![](images/image-41.png)
 - definition: decoder = mirror image of encoder
     - transpose of encoder layer weight matrix = decoder layer weight matrix(y=W^T·W·x, originally y=W^-1·W·x)
         - sharing same weight(Tied weight) + dimension transposition(Auto-Encoder) 
 - advantage: weight parameter/2(train speed ↑, overfitting ↓)
 
 # Denoising Auto-Encoder
-![](images/2023-05-03-15-09-56.png)
+![](images/image-42.png)
 - condition
     - train data: noise-free data
     - test data: noisy data
@@ -48,10 +48,10 @@
 - advantage: get rid of noise
 
 # Stacked Auto-Encoder(Deep Auto-Encoder)
-![](images/2023-05-03-15-23-18.png)
+![](images/image-43.png)
 - definition: stack many one-layer AEs
 ## Classification(supervised learning)
-![](images/2023-05-03-16-09-19.png)
+![](images/image-44.png)
 - step
     - train Stacked AE by unsupervised learning
     - consider only Stacked AE's encoding part and add MLP(FC) on the top of latent vector
